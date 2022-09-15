@@ -140,9 +140,9 @@ The Nginx container will expose 8080 port. The configuration file above, in the 
 At this moment, your project directory would have the following structure:
 ```bash
 .
-├── udagram-api-feed
+├── udagram-api-feed-feed
 │   └── src
-├── udagram-api-user
+├── udagram-api-feed-user
 │   └── src
 ├── udagram-frontend
 │   └── src
@@ -159,7 +159,7 @@ At this moment, your project directory would have the following structure:
 1. Once you have created the Dockerfile in each of the following services directories, you can use the `docker-compose` command to build and run multiple Docker containers at once.
 
    - */project/udagram-api-feed/* 
-   - */project/udagram-api-feed/* 
+   - */project/udagram-api-user/* 
    - */project/udagram-frontend/* 
    - */project/udagram-reverseproxy/*
 
@@ -169,7 +169,7 @@ At this moment, your project directory would have the following structure:
 
 2. **Create Images** - In the project's parent directory, create a [docker-compose-build.yaml](https://video.udacity-data.com/topher/2021/July/60e28b72_docker-compose-build/docker-compose-build.yaml) file. It will create an image for each individual service. Then, you can run the following command to create images locally:
 ```bash
-# Make sure the Docker services are running in your local machine
+# Make sure the Dockerfile services are running in your local machine
 # Remove unused and dangling images
 docker image prune --all
 # Run this command from the directory where you have the "docker-compose-build.yaml" file present

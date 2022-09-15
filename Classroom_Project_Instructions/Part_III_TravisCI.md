@@ -21,7 +21,7 @@ Use Travis CI pipeline to build and push images to your DockerHub registry.
 
 1. Create an account on https://travis-ci.com/ (not https://travis-ci.org/). It is recommended that you sign in using your Github account.
 
-2. Integrate Github with Travis: Activate your GitHub repository with whom you want to set up the CI pipeline. 
+2. Integrate GitHub with Travis: Activate your GitHub repository with whom you want to set up the CI pipeline. 
 
 3. Set up your Dockerhub username and password in the Travis repository's settings, so that they can be used inside of `.travis.yml` file while pushing images to the Dockerhub. 
 
@@ -32,19 +32,19 @@ Use Travis CI pipeline to build and push images to your DockerHub registry.
     # Assuming the .travis.yml file is in the project directory, and there is a separate sub-directory for each service
     # Use either `docker-compose` or individual `docker build` commands
     # Build
-      - docker build -t udagram-api-feed ./udagram-api-feed
+      - docker build -t udagram-api-feed-feed ./udagram-api-feed-feed
     # Do similar for other three images
     ```
 
     ```bash
     # Tagging
-      - docker tag udagram-api-feed sudkul/udagram-api-feed:v1
+      - docker tag udagram-api-feed-feed sudkul/udagram-api-feed-feed:v1
     # Do similar for other three images```
     ```bash
     # Push
     # Assuming DOCKER_PASSWORD and DOCKER_USERNAME are set in the Travis repository settings
       - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-      - docker push sudkul/udagram-api-feed:v1
+      - docker push sudkul/udagram-api-feed-feed:v1
     # Do similar for other three images
     ```
 > **Tip**: Use different tags each time you push images to the Dockerhub.   
