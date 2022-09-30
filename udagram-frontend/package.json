@@ -61,4 +61,5 @@
   "description": "An Ionic project",
   "optionalDependencies": {
     "fsevents": "*"
+  } 
 }
