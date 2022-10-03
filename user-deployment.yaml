@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: user
+  name: backend-user
   labels:
-    app: user
+    app: backend-user
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: user
+      app: backend-user
   template:
     metadata:
       labels:
-        app: user
+        app: backend-user
     spec:
       containers:
-        - name: user
+        - name: backend-user
           image: vifieh/udagram-api-user:v2
           ports:
             - containerPort: 8080
@@ -24,3 +24,10 @@ spec:
                 name: env-configmap
             - secretRef:
                 name: env-pg-secrets
+          volumeMounts:
+            - mountPath: "/root/.aws/"
+              name: aws-creds
+      volumes:
+        - name: aws-creds
+          configMap:
+            name: aws-creds

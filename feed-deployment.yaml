@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: feed
+  name: backend-feed
   labels:
-    app: feed
+    app: backend-feed
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: feed
+      app: backend-feed
   template:
     metadata:
       labels:
-        app: feed
+        app: backend-feed
     spec:
       containers:
-        - name: feed
-          image: vifieh/udagram-api-feed:v2
+        - name: backend-feed
+          image: vifieh/udagram-api-feed:v3
           ports:
             - containerPort: 8080
           envFrom:
@@ -24,3 +24,10 @@ spec:
                 name: env-configmap
             - secretRef:
                 name: env-pg-secrets
+          volumeMounts:
+            - mountPath: "/root/.aws/"
+              name: aws-creds
+      volumes:
+        - name: aws-creds
+          configMap:
+            name: aws-creds
